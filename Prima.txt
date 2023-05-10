@@ -1,0 +1,31 @@
+start_matrix = [[999,   2,   2, 999,   7, 999, 999, 999],
+                [  2, 999,   2,   9,   2, 999, 999, 999],
+                [  2,   2, 999, 999,   5, 999, 999, 999],
+                [999,   9, 999, 999,  10,   5,   2,  16],
+                [  7,   2,   5,  10, 999, 999,   9, 999],
+                [999, 999, 999,   5, 999, 999, 999,  17],
+                [999, 999, 999,   2,   9, 999, 999,  17],
+                [999, 999, 999, 999, 999,  17,  17, 999]]
+
+list_points = []
+
+point = int(input('Введите начальную вершину(1, 2, 3...): '))
+list_points.append(point)
+
+j = 0
+
+for k in range(8):
+    start_matrix[k][point - 1] = 999
+
+for i in range(point - 1, len(start_matrix)):
+    while j < int(len(start_matrix)):
+        if (int(min(start_matrix[i])) == start_matrix[i][j]) and ((j + 1) not in list_points):
+            list_points.append(j + 1)
+            i = j
+            for k in range(8):
+                start_matrix[k][j] = 999
+            j = 0
+        else:
+            j += 1
+
+print(list_points)

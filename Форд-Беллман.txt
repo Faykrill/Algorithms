@@ -1,0 +1,34 @@
+list_matrix = [[999,   2, 999, 999, 999],
+               [999,   3,   1,   7, 999],
+               [999, 999,   5, 999,   4],
+               [999,   2, 999, 999, 999],
+               [999, 999, 999, 999, 999]]
+
+list_matrix2 = [999,
+                999,
+                999,
+                999,
+                999]
+list_last = [999,
+             999,
+             999,
+             999,
+             999]
+n = int(input('Начальная вершина: '))
+m = 999
+
+for i in range(1, 5):
+    for j in range(0, 5):
+        for k in range(0, 5):
+            m1 = list_matrix[k][j] + list_matrix2[k]
+            if j == n - 1:
+                m = 0
+            elif m1 < m:
+                m = m1
+        
+        list_matrix2[j] = m
+        list_matrix2[n - 1] = 0
+        m = 999
+
+for j in range(0, 5):
+    print(list_matrix2[j])

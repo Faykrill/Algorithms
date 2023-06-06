@@ -10,7 +10,7 @@ start_matrix = [[0, 2, 2, 999, 7, 999, 999, 999],
 n = len(start_matrix)
 dist = [999] * n
 visit = []
-start = 0   # int(input())
+start = 0
 
 dist[start] = 0
 for _ in range(n):

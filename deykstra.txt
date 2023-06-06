@@ -1,0 +1,22 @@
+start_matrix = [[0, 2, 2, 999, 7, 999, 999, 999],
+                [2, 0, 2, 9, 2, 999, 999, 999],
+                [2, 2, 0, 999, 5, 999, 999, 999],
+                [999, 9, 999, 0, 10, 5, 2, 16],
+                [7, 2, 2, 10, 0, 999, 9, 999],
+                [999, 999, 999, 5, 999, 0, 999, 17],
+                [999, 999, 999, 2, 9, 999, 0, 17],
+                [999, 999, 999, 16, 999, 17, 17, 0]]
+
+n = len(start_matrix)
+dist = [999] * n
+visit = []
+start = 0   # int(input())
+
+dist[start] = 0
+for _ in range(n):
+    s, w = min([(dist[v], v) for v in range(n) if v not in visit])
+    visit.append(w)
+    for v in range(n):
+        dist[v] = min(dist[v], dist[w]+start_matrix[w][v])
+
+[print(f'{start}→{v}: {d}') for v, d in enumerate(dist)]

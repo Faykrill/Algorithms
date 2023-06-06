@@ -12,7 +12,7 @@ V = [{v} for v in range(n)]
 end_matrix = []
 for j in range(n):
     for i in range(j):
-        if start_matrix[i][j] != float('inf'):
+        if start_matrix[i][j] != 999:
             end_matrix.append((start_matrix[i][j], i, j))
 
 mst = []

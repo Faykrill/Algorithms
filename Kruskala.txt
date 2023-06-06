@@ -1,0 +1,28 @@
+start_matrix = [[999, 2, 2, 999, 7, 999, 999, 999],
+                [2, 999, 2, 9, 2, 999, 999, 999],
+                [2, 2, 999, 999, 5, 999, 999, 999],
+                [999, 9, 999, 999, 10, 5, 2, 16],
+                [7, 2, 2, 10, 999, 999, 9, 999],
+                [999, 999, 999, 5, 999, 999, 999, 17],
+                [999, 999, 999, 2, 9, 999, 999, 17],
+                [999, 999, 999, 16, 999, 17, 17, 999]]
+n = len(start_matrix)
+V = [{v} for v in range(n)]
+
+end_matrix = []
+for j in range(n):
+    for i in range(j):
+        if start_matrix[i][j] != float('inf'):
+            end_matrix.append((start_matrix[i][j], i, j))
+
+mst = []
+for e, v, u in sorted(end_matrix):
+    if len(mst) == n-1:
+        break
+    if V[v] != V[u]:
+        mst.append((e, v, u))
+        vu = V[v] | V[u]
+        for i in vu:
+            V[i] = vu
+
+print(sum([e for e, v, u in mst]))
